@@ -1,3 +1,7 @@
+#####################################################################
+# unweighted directed graph maker
+# positions not fixed
+#####################################################################
 import networkx as nx
 import matplotlib.pyplot as plt
 a=nx.DiGraph()
