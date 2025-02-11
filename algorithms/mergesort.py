@@ -3,10 +3,12 @@
 
 input = [1,5,2,3,5,3,67,1]
 
+n=0
 
 
 def sort(input:list) -> list:
-    print(1)
+    print(n)
+    n+=1
     lengh = len(input)
     if lengh <= 1:
         return list
@@ -16,7 +18,13 @@ def sort(input:list) -> list:
     leftList=input[:middle_index]
     rightList=input[middle_index:]
 
-
+    print(f"""
+    r:
+    {rightList}
+    l:
+    {leftList}
+    
+    """)
     sortedLeftList = sort(leftList)
     sortedRightList = sort(rightList)
     
