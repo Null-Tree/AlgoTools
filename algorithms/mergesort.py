@@ -3,52 +3,58 @@
 
 input = [1,5,2,3,5,3,67,1]
 
-n=0
-
-
-def sort(input:list) -> list:
-    print(n)
-    n+=1
+# MODE : "asc" or "desc"
+def sort(input:list, mode:str) -> list:
     lengh = len(input)
     if lengh <= 1:
-        return list
-    
+        return input
     middle_index = lengh//2
 
     leftList=input[:middle_index]
     rightList=input[middle_index:]
 
-    print(f"""
-    r:
-    {rightList}
-    l:
-    {leftList}
-    
-    """)
-    sortedLeftList = sort(leftList)
-    sortedRightList = sort(rightList)
+    sortedLeftList = sort(leftList,mode)
+    sortedRightList = sort(rightList,mode)
     
     lLengh = len(sortedLeftList)
     rLengh=len(sortedRightList)
     result=[]
-    li,ri=0
+    li,ri=0,0
 
-    for i in lengh:
-        
+    for i in range(lengh):
         if li >= lLengh:
-            result.append(sortedRightList[i])
+            result.append(sortedRightList[ri])
             ri+=1
+            continue
         if ri >= rLengh:
-            result.append(sortedLeftList[i])
+            result.append(sortedLeftList[li])
             li+=1
+            continue
 
         # sort asending
-        if sortedLeftList[i] > sortedRightList[i]:
-            result.append(sortedRightList[i])
+        priority=""
+        if mode =="asc":
+            if sortedLeftList[li] > sortedRightList[ri]:
+                priority = "r"
+            else:
+                priority="l"
+        elif mode =="desc":
+            if sortedLeftList[li] < sortedRightList[ri]:
+                priority = "r"
+            else:
+                priority="l"
+
+
+
+        if priority=="r":
+            result.append(sortedRightList[ri])
             ri+=1
+            continue
         else:
-            result.append(sortedLeftList[i])
+            result.append(sortedLeftList[li])
             li+=1
+            continue
+
 
     return result
 
@@ -57,9 +63,9 @@ def sort(input:list) -> list:
 
 
 def main():
-    lst=sort(input)
-    print(lst)
+    print(sort(input,"asc"))
+    print(sort(input,"desc"))
 
 
-
-main()
+if __name__ == "__main__":
+    main()
