@@ -55,9 +55,9 @@ mode="either"
 
 
 
+import time
 
-
-
+from datetime import timedelta
 
 
 
@@ -107,7 +107,10 @@ def checkListContent(oldList:list,newlist:list):
             return False
     
     return True
-        
+
+def printDebug(unsortedList,sortedList):
+    print(f"input: {unsortedList}")
+    print(f"received : {sortedList}")
 
 if __name__=="__main__":
     if maxLengh <1:
@@ -122,9 +125,12 @@ if __name__=="__main__":
             unsortedList.append(random.randint(0,100))
 
         
+        Rstarttime=time.perf_counter()
 
         sortedList=mainsort(unsortedList.copy())
 
+        Rendtime = time.perf_counter()
+        RtimeTaken= timedelta(seconds=Rendtime - Rstarttime)
 
         print(f"Testing random list of lengh: {i}")
         passed = True
@@ -133,28 +139,25 @@ if __name__=="__main__":
         if mode == "either":
             if (not checkorder(sortedList,"asc")) and (not checkorder(sortedList,"desc")):
                 print("incorrect order, accepting either order")
-                print(f"input: {unsortedList}")
-                print(f"received : {sortedList}")
+                printDebug(unsortedList,sortedList)
                 passed = False
         else:
             if (not checkorder(sortedList,mode)):
                 print(f"incorrect order, testing for {mode} order")
-                print(f"input: {unsortedList}")
-                print(f"received : {sortedList}")
+                printDebug(unsortedList,sortedList)
                 passed = False
         
 
         if not checkListContent(sortedList,unsortedList):
             print(f"Contents of received list did not match original list")
-            print(f"input: {unsortedList}")
-            print(f"received : {sortedList}")
+            printDebug(unsortedList,sortedList)
             passed = False
 
-        
+        print(f"    real time elapsed: {RtimeTaken}")
         if passed:
-            print("Pass")
+            print("    Pass")
         else:
-            print("No pass")
+            print("    No pass")
             quit()
     
 
