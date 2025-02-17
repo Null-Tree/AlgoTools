@@ -21,8 +21,7 @@ edges:list[tuple[str]] = [
     ("C","D")
 ]
 
-for node in nodes:
-    a.add_node(node)
+a.add_nodes_from(nodes)
 
 a.add_edges_from(edges)
 

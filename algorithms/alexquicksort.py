@@ -7,8 +7,10 @@ def quicksort(listToSort: list) -> list:
         if i == pivot:
             i += 1
             continue
+        
         item = listToSort[i]
         pivotItem = listToSort[pivot]
+
         if item < pivotItem and i > pivot:
             listToSort.insert(pivot, listToSort.pop(i))
             pivot += 1
