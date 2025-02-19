@@ -9,12 +9,12 @@ def mainsort(input:list):
 
 #     please sort the input list and return the sorted list
         
-    quicksort.quickSort(unsortedList)
+    quicksort.quickSort(unsortedList,"desc")
     sortedList=unsortedList
 
 
     # sortedList = alexquicksort.quicksort(input)
-    
+    print(sortedList)
     return sortedList
 ###############################################
 

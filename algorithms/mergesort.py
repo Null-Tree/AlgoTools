@@ -4,7 +4,7 @@
 input = [1,5,2,3,5,3,67,1]
 
 # MODE : "asc" or "desc"
-def sort(input:list, mode:str) -> list:
+def mergeSort(input:list, mode:str) -> list:
     lengh = len(input)
     if lengh <= 1:
         return input
@@ -13,8 +13,8 @@ def sort(input:list, mode:str) -> list:
     leftList=input[:middle_index]
     rightList=input[middle_index:]
 
-    sortedLeftList = sort(leftList,mode)
-    sortedRightList = sort(rightList,mode)
+    sortedLeftList = mergeSort(leftList,mode)
+    sortedRightList = mergeSort(rightList,mode)
     
     lLengh = len(sortedLeftList)
     rLengh=len(sortedRightList)
@@ -63,8 +63,8 @@ def sort(input:list, mode:str) -> list:
 
 
 def main():
-    print(sort(input,"asc"))
-    print(sort(input,"desc"))
+    print(mergeSort(input,"asc"))
+    print(mergeSort(input,"desc"))
 
 
 if __name__ == "__main__":

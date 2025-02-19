@@ -1,4 +1,0 @@
-for i :
-    print(i)
-    i-=1
-
