@@ -18,8 +18,8 @@ def graph(nodes:list[str],
                   plot:bool=None,
                   show:bool=None,
                   save:bool=None,
-                  nodesize:int=None):
-
+                  nodesize:int=None,
+                  weighted:bool=None):
 
     if directed:
         a=nx.DiGraph()
@@ -54,9 +54,11 @@ def graph(nodes:list[str],
         #edges
 
         nx.draw_networkx_edges(a,pos,width=2,edge_color="#cdcecf")
-        edge_labels=dict([((u,v),d["weight"]) for u,v,d in a.edges(data=True)])
 
-        nx.draw_networkx_edge_labels(a,pos,edge_labels=edge_labels,font_color="#1f2120")
+        if weighted:
+            edge_labels=dict([((u,v),d["weight"]) for u,v,d in a.edges(data=True)])
+
+            nx.draw_networkx_edge_labels(a,pos,edge_labels=edge_labels,font_color="#1f2120")
         #other
 
         ax.set_facecolor("#2a303c")
@@ -70,3 +72,24 @@ def graph(nodes:list[str],
     else:
         return a
     
+
+
+
+nodes:list[str] = [str(x) for x in range (1,7)]
+
+# [source, target]
+edges:list[tuple[str]] = [
+    ("1", "5", {"weight":1}),
+    ("1", "2", {"weight":1}),
+    ("2", "5", {"weight":1}),
+    ("5", "4", {"weight":1}),
+    ("4", "3", {"weight":1}),
+    ("4", "3", {"weight":1}),
+    ("2", "3", {"weight":1}),
+    ("4", "6", {"weight":1})
+
+]
+
+
+newgraph = graph(nodes,edges,directed=False,show=True,weighted=False)
+
