@@ -1,5 +1,5 @@
-import quicksort
-import alexquicksort
+# import quicksort
+# import alexquicksort
 
 import random
 
@@ -9,7 +9,7 @@ def mainsort(input:list):
 
 #     please sort the input list and return the sorted list
         
-    quicksort.quickSort(unsortedList,"desc")
+    # quicksort.quickSort(unsortedList,"desc")
     sortedList=unsortedList
 
 
