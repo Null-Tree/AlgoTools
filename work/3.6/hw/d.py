@@ -3,7 +3,7 @@ import random
 import networkx as nx
 import matplotlib.pyplot as plt
 
-
+print("\n=================\nQuestion D\n=======================\n")
 ####################################
 
 #bfs
@@ -78,7 +78,7 @@ graph.add_nodes_from(nodes)
 
 graph.add_edges_from(edges)
 
-fig, ax = plt.subplots()
+fig, (ax1,ax2) = plt.subplots(nrows=1, ncols=2)
 
 # pos=nx.kamada_kawai_layout(graph)
 # pos=nx.shell_layout(graph)
@@ -87,26 +87,26 @@ pos=nx.circular_layout(graph)
 
 
 # nodes
-nx.draw_networkx_nodes(graph,pos,node_size=300,node_color="#1f2120", node_shape="o" ) #  
+nx.draw_networkx_nodes(graph,pos,node_size=300,node_color="#1f2120", node_shape="o" ,ax=ax1) #  
 
-nx.draw_networkx_labels(graph,pos,font_color="#cdcecf")  #,font_size=14
+nx.draw_networkx_labels(graph,pos,font_color="#cdcecf",ax=ax1)  #,font_size=14
 
 #edges
 
-nx.draw_networkx_edges(graph,pos,width=2,edge_color="#cdcecf")
+nx.draw_networkx_edges(graph,pos,width=6,edge_color="#cdcecf",ax=ax1)
 edge_labels=dict([((u,v),d["weight"]) for u,v,d in graph.edges(data=True)])
 
-nx.draw_networkx_edge_labels(graph,pos,edge_labels=edge_labels,font_color="#1f2120")
+nx.draw_networkx_edge_labels(graph,pos,edge_labels=edge_labels,font_color="#1f2120",ax=ax1)
 #other
 
-ax.set_facecolor("#2a303c")
+ax1.set_facecolor("#2a303c")
 
 # plt.axis('off')
 
 ###################################
-
-
-routes,totalTold=bfs(graph, "denninson")
+ax2.set_facecolor("#2a303c")
+instigator="denninson"
+routes,totalTold=bfs(graph, instigator)
 
 
 # print(routes)
@@ -124,12 +124,20 @@ for i in range(len(routes)):
 
 
 print("==================")
+
+print(f"rumour spread took a total of: {len(routes)} conversations for {len(people)} people with {instigator} as instigator")
+print("==================")
 # maps route ontop
 routesGraph=nx.Graph()
 routesGraph.add_nodes_from(nodes)
 routesGraph.add_edges_from(routes)
 pos2=nx.circular_layout(graph)
-nx.draw_networkx_edges(routesGraph,pos2,width=2,edge_color="red")
+
+nx.draw_networkx_nodes(graph,pos,node_size=300,node_color="#1f2120", node_shape="o" ,ax=ax2) #  
+
+nx.draw_networkx_labels(graph,pos,font_color="#cdcecf",ax=ax2)  #,font_size=14
+
+nx.draw_networkx_edges(routesGraph,pos2,width=2,edge_color="red",ax=ax2)
 
 ###################################
 

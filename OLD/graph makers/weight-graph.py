@@ -6,20 +6,10 @@ import networkx as nx
 import matplotlib.pyplot as plt
 a=nx.Graph()
 
-nodes:list[str] = [
-    "A",
-    "B",
-    "C",
-    "D"
-]
+nodes:list[str] = ['a', 'b', 'c', 'd', 'e', 'f']
 
 # [source, target]
-edges:list[tuple[str]] = [
-    ("B", "A", {"dist":10}),
-    ("D", "B", {"dist":10}),
-    ("B", "C", {"dist":10}),
-    ("C", "D", {"dist":10})
-]
+edges:list[tuple[str]] = [('a', 'b', {'weight': 6}), ('a', 'd', {'weight': 5}), ('a', 'c', {'weight': 1}), ('b', 'c', {'weight': 5}), ('d', 'c', {'weight': 5}), ('b', 'e', {'weight': 3}), ('e', 'f', {'weight': 6}), ('e', 'c', {'weight': 6}), ('c', 'f', {'weight': 4}), ('d', 'f', {'weight': 2})]
 
 
 

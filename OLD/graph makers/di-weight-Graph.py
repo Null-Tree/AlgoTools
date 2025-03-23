@@ -4,22 +4,20 @@
 #####################################################################
 import networkx as nx
 import matplotlib.pyplot as plt
-a=nx.DiGraph()
+nodes=['a', 'b', 'c', 'd', 'e', 'f']
+# edges=[('a', 'b', {'weight': 6}), ('a', 'd', {'weight': 5}), ('a', 'c', {'weight': 1}), ('b', 'c', {'weight': 5}), ('d', 'c', {'weight': 5}), ('b', 'e', {'weight': 3}), ('e', 'f', {'weight': 6}), ('e', 'c', {'weight': 6}), ('c', 'f', {'weight': 4}), ('d', 'f', {'weight': 2})]
 
-nodes:list[str] = [
-    "A",
-    "B",
-    "C",
-    "D"
-]
+edges=[('a', 'b', {'weight': -1}), ('a', 'd', {'weight': 5}), ('b', 'c', {'weight': -6}), ('c', 'a', {'weight': 5}), ('d', 'c', {'weight': 5}), ('b', 'e', {'weight': 3}), ('e', 'f', {'weight': 6}), ('e', 'c', {'weight': 6}), ('c', 'f', {'weight': 4}), ('d', 'f', {'weight': 2})]
 
-# [source, target]
-edges:list[tuple[str]] = [
-    ("B", "A", {"dist":10}),
-    ("D", "B", {"dist":10}),
-    ("B", "C", {"dist":10}),
-    ("C", "D", {"dist":10})
-]
+
+
+ingraph=nx.DiGraph()
+
+
+ingraph.add_nodes_from(nodes)
+
+ingraph.add_edges_from(edges)
+a=ingraph
 
 
 a.add_nodes_from(nodes)
@@ -45,7 +43,7 @@ nx.draw_networkx_labels(a,pos,font_color="#cdcecf")  #,font_size=14
 #edges
 
 nx.draw_networkx_edges(a,pos,width=2,edge_color="#cdcecf")
-edge_labels=dict([((u,v),d["dist"]) for u,v,d in a.edges(data=True)])
+edge_labels=dict([((u,v),d["weight"]) for u,v,d in a.edges(data=True)])
 
 nx.draw_networkx_edge_labels(a,pos,edge_labels=edge_labels,font_color="#1f2120")
 #other

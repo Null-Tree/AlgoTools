@@ -4,26 +4,19 @@
 #####################################################################
 import networkx as nx
 import matplotlib.pyplot as plt
-a=nx.DiGraph()
+nodes=['a', 'b', 'c', 'd', 'e', 'f']
+edges=[('a', 'b', {'weight': 6}), ('a', 'd', {'weight': 5}), ('a', 'c', {'weight': 1}), ('b', 'c', {'weight': 5}), ('d', 'c', {'weight': 5}), ('b', 'e', {'weight': 3}), ('e', 'f', {'weight': 6}), ('e', 'c', {'weight': 6}), ('c', 'f', {'weight': 4}), ('d', 'f', {'weight': 2})]
 
-nodes:list[str] = [
-    "A",
-    "B",
-    "C",
-    "D"
-]
+# edges=[ ('a', 'b', {'weight': 5}), ('a', 'b', {'weight': 1}), ('b', 'c', {'weight': 5})]
 
-# [source, target]
-edges:list[tuple[str]] = [
-    ("B", "A"),
-    ("D","B"),
-    ("B","C"),
-    ("C","D")
-]
 
-a.add_nodes_from(nodes)
+ingraph=nx.DiGraph()
 
-a.add_edges_from(edges)
+
+ingraph.add_nodes_from(nodes)
+
+ingraph.add_edges_from(edges)
+a=ingraph
 
 fig, ax = plt.subplots()
 

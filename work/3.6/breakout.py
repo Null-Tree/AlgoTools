@@ -59,7 +59,7 @@ displayG=prim(G)
 pos = nx.shell_layout(displayG) # position nodes on canvas
 nx.draw_networkx_nodes(displayG, pos, node_size=1000,node_color='LightGray')
 nx.draw_networkx_labels(displayG, pos, font_size=20,font_family='sans-serif')
-nx.draw_networkx_edges(displayG, pos, width=3, edge_color='LightBlue')
+nx.draw_networkx_edges(displayG, pos, width=5, edge_color='LightBlue')
 
 edge_labels=dict([((u,v),d['weight'])
 for u,v,d in displayG.edges(data=True)])
