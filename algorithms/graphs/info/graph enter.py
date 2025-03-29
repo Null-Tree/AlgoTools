@@ -33,15 +33,27 @@ while stage=="edges":
         stage="end"
         break
     n2=input("n2: ")
-    weight=input("weight: ")
-    tup=(n1,n2,{"weight":int(weight)})
+
+
+    tup=(n1,n2)
+    
+
+
+    # weight=input("weight: ")
+    # tup=(n1,n2,{"weight":int(weight)})
+    
     edges.append(tup)
     print(tup)
     sep()
 
 sep()
-print("Nodes")
-print(nodes)
-sep()
-print("edges")
-print(edges)
+
+
+print(f"""
+
+nodes={nodes}
+
+edges={edges}
+
+
+""")
